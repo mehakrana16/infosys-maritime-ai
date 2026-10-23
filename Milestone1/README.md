@@ -154,6 +154,6 @@ Cloud database, cookie-based sessions, generic error messages, email verificatio
 
 ## 👤 Author
 
-**Your Name** — Infosys Springboard Virtual Internship 2026
+Mehak Rana — Infosys Springboard Virtual Internship 2026
 
 *Built as part of the Infosys Springboard Virtual Internship project.*
