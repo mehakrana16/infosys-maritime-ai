@@ -1,9 +1,23 @@
-# FreightQuote AI · Milestone 2
+# FreightQuote AI · Agentic AI for Maritime Freight Pricing and Route Optimization
 
 **Team name: Team03**
 Infosys Springboard Internship 7.0 · Batch 4
 
-A secure, multi-user freight quoting platform built with **FastAPI, SQLite, JWT, bcrypt and RBAC**, running on **Google Colab** (ngrok as fallback). It takes the provided FreightQuote AI (six AI agents and a SQL Copilot) and turns it into a real product with a login system, five roles, a Profile page, an Admin dashboard, a role-aware Copilot and a new design with dark mode.
+An Agentic AI-powered solution that optimizes maritime freight pricing and shipping routes by analyzing market trends, fuel costs, weather conditions, port congestion and transit times. AI agents collaborate to recommend cost-effective routes, estimate freight prices and support smarter, data-driven shipping decisions.
+
+**Milestone 2** turns the provided FreightQuote AI (six AI agents and a SQL Copilot) into a secure, multi-user product built with **FastAPI, SQLite, JWT, bcrypt and RBAC**, running on **Google Colab** (ngrok as fallback). It adds a login system, five roles, a Profile page, an Admin dashboard, a role-aware Copilot and a new design with dark mode.
+
+![Project banner](Screenshots/00-banner.png)
+
+---
+
+## Repository layout
+
+| Folder | What it holds |
+|---|---|
+| `Milestone1/` | User Authentication Module (login, signup, forgot password, admin login) |
+| `Milestone2/` | FreightQuote AI platform: FastAPI, JWT, bcrypt, RBAC, Admin dashboard, role-aware Copilot (this README lives here) |
+| `Milestone2/Screenshots/` | Screenshots used in this README |
 
 ---
 
@@ -19,7 +33,16 @@ A secure, multi-user freight quoting platform built with **FastAPI, SQLite, JWT,
 ---
 
 ## Table of contents
-1. [Features](#features) 2. [How to run](#how-to-run) 3. [Roles and privileges](#roles-and-privileges) 4. [What each team member built](#what-each-team-member-built) 5. [Security](#security) 6. [Copilot](#ai-copilot) 7. [Project structure](#project-structure) 8. [Testing](#testing) 9. [Screenshots](#screenshots-to-add) 10. [Troubleshooting](#troubleshooting)
+1. [Features](#features)
+2. [Screenshots](#screenshots)
+3. [How to run](#how-to-run)
+4. [Roles and privileges](#roles-and-privileges)
+5. [What each team member built](#what-each-team-member-built)
+6. [Security](#security)
+7. [AI Copilot](#ai-copilot)
+8. [Project structure](#project-structure)
+9. [Testing](#testing)
+10. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -33,6 +56,71 @@ A secure, multi-user freight quoting platform built with **FastAPI, SQLite, JWT,
 * **Run agents** page: run one agent or all agents now.
 * **AI Copilot**: 30+ question patterns, spelling-mistake handling, the SQL and row count shown under every answer, polite reply and three suggestions when a question is out of scope, role-aware data access.
 * **Design**: consistent theme, dark mode, loading placeholders, clear error and 403 pages, phone-friendly layout.
+
+---
+
+## Screenshots
+
+### 1. Login and sign-up
+Sign in, sign up and forgot-password screens with the five-card role picker.
+
+<p align="center">
+  <img src="Screenshots/01-login.png" alt="Login page" width="48%">
+  <img src="Screenshots/02-signup.png" alt="Sign-up page" width="48%">
+</p>
+
+<p align="center">
+  <img src="Screenshots/03-role-picker.png" alt="Role picker with five role cards" width="70%">
+</p>
+
+### 2. Profile page
+Username, email, role, joined date and last login, with change username and change password.
+
+<p align="center">
+  <img src="Screenshots/04-profile.png" alt="Profile page" width="80%">
+</p>
+
+### 3. Admin dashboard
+KPI cards, users table, add user, role change, lock/unlock, delete with confirmation and the activity log.
+
+<p align="center">
+  <img src="Screenshots/05-admin-dashboard.png" alt="Admin dashboard with users table" width="90%">
+</p>
+
+### 4. Access denied (403)
+A restricted role opening a page outside its privileges (for example typing `#admin` as Operations Manager).
+
+<p align="center">
+  <img src="Screenshots/06-403-denied.png" alt="403 access denied page" width="80%">
+</p>
+
+### 5. Role matrix
+Which role can open which page.
+
+<p align="center">
+  <img src="Screenshots/07-role-matrix.png" alt="Role permission matrix" width="80%">
+</p>
+
+### 6. AI Copilot
+An exact question answered with the SQL behind it, and a greeting.
+
+<p align="center">
+  <img src="Screenshots/08-copilot-answer.png" alt="Copilot answering a question with SQL shown" width="48%">
+  <img src="Screenshots/09-copilot-greeting.png" alt="Copilot greeting" width="48%">
+</p>
+
+### 7. Quote and Weather
+A generated quote (Freight Broker or Admin) and the Weather page after injecting a storm (Admin).
+
+<p align="center">
+  <img src="Screenshots/10-quote-generated.png" alt="Generated quote" width="48%">
+  <img src="Screenshots/11-weather-storm.png" alt="Weather page after storm injection" width="48%">
+</p>
+
+### 8. Dark mode
+<p align="center">
+  <img src="Screenshots/12-dark-mode.png" alt="Dark mode" width="80%">
+</p>
 
 ---
 
@@ -136,7 +224,7 @@ Every answer is produced by a fixed, parameterised `SELECT`; the SQL and the num
 ### Tested questions with answers (sample run, as Admin)
 | Question | Answer | Rows |
 |---|---|---|
-| Which carrier is cheapest to Rotterdam? | Cheapest carrier serving Rotterdam Port: X-Press Feeders (cost index 0.86, 83.7% on time). Cost index is relative: lower means che | 4 |
+| Which carrier is cheapest to Rotterdam? | Cheapest carrier serving Rotterdam Port: X-Press Feeders (cost index 0.86, 83.7% on time). Cost index is relative: lower means cheaper. | 4 |
 | how many shipments are on customs hold | 47 shipments are on customs hold; most at Salalah Port (2). | 10 |
 | quotes below 10% margin | 1 quotes have a margin below 10%; the lowest is QTE-0006 at 9.1%. | 1 |
 | which ports are most congested | Most congested port: Limassol Port (index 4.6, dwell 7.0 days). Top 5 below. | 5 |
@@ -157,11 +245,11 @@ Every answer is produced by a fixed, parameterised `SELECT`; the SQL and the num
 | Which ports have the strongest winds? | Strongest winds: Shanghai Port (1.5 m waves, 55.8 km/h wind). | 5 |
 | What is the weather at Singapore? | Weather at Singapore Port: wind 25.2 km/h, waves 5.4 m, 25.8 °C, severity 1. | 1 |
 | How many critical tickets are open? | There are 43 open agent tickets, 6 of them critical. | 5 |
-| Tell me about Maersk Line | Maersk Line: rating 4.85/5, 84.3% on time, cost index 1.15, Low risk. It carries 29 shipments, 12 of them delayed or on customs ho | 1 |
+| Tell me about Maersk Line | Maersk Line: rating 4.85/5, 84.3% on time, cost index 1.15, Low risk. It carries 29 shipments, 12 of them delayed or on customs hold. | 1 |
 | Which carrier is least reliable? | Least reliable carrier: Regional Feeder Line 43 with 68.4% on-time delivery. | 5 |
 | Which ports in Asia are most congested? | Most congested port in Asia: Bangkok Port (index 4.6, dwell 5.0 days). Top 5 below. | 5 |
 | How many vessels are at sea? | 267 vessels are being tracked at sea, on average 44% of the way, at 14.5 knots. | 1 |
-| Which carrier is cheepest to Rotterdm? | Cheapest carrier serving Rotterdam Port: X-Press Feeders (cost index 0.86, 83.7% on time). Cost index is relative: lower means che | 4 |
+| Which carrier is cheepest to Rotterdm? | Cheapest carrier serving Rotterdam Port: X-Press Feeders (cost index 0.86, 83.7% on time). Cost index is relative: lower means cheaper. | 4 |
 | how many shpiments are on custums hold | 47 shipments are on customs hold; most at Salalah Port (2). | 10 |
 
 Out-of-scope example ("What is the capital of France?"): *I'm sorry, I couldn't match that to the data I can query. I only answer from the database, so I won't guess. Here are three questions that work:*
@@ -175,6 +263,7 @@ The numbers come from randomly seeded demo data, so they differ between runs.
 Milestone2/
   Milestone2_FreightQuote_Final.ipynb     the whole project as one Colab notebook
   README.md
+  Screenshots/           all images used in this README
   app/
     server.py            FastAPI app: routes, user_of, ctx, need, menu_for
     auth.py              users DB, bcrypt, JWT, signup/login/reset, lockout, profile + admin operations      (new)
@@ -203,17 +292,6 @@ Also tested: 5 wrong passwords lock the account; an old token stops working afte
 
 ---
 
-## Screenshots to add
-1. Login page and sign-up page
-2. Profile page
-3. Admin dashboard with the users table
-4. A denied (403) page for a restricted role (for example type `#admin` as Operations Manager)
-5. The role matrix (this README or the Admin dashboard)
-6. Copilot answering an exact question and a greeting
-7. A generated quote, and the Weather page after injecting a storm (Admin)
-
----
-
 ## Troubleshooting
 | Problem | Fix |
 |---|---|
@@ -222,6 +300,11 @@ Also tested: 5 wrong passwords lock the account; an old token stops working afte
 | "Account is locked" | Ask an Admin to unlock it, or use Forgot password. |
 | E-mail code not sent | Add `EMAIL_ADDRESS` and `EMAIL_PASSWORD` (Gmail app password) in Colab Secrets, or use the security question. |
 | Old design after an update | Press Ctrl+F5 in the browser. |
+
+---
+
+## License
+Released under the **MIT License**. See [LICENSE](../LICENSE).
 
 ---
 
