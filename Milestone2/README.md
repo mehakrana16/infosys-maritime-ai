@@ -25,8 +25,8 @@ An Agentic AI-powered solution that optimizes maritime freight pricing and shipp
 |---|---|---|
 | **Bhawana** | **Admin and Operations Manager** | Admin dashboard (users table, add, delete, role change, lock/unlock, KPI cards, activity log), Run agents page, and the Operations Manager role (Route, Carriers, Weather, Customs, Run agents) |
 | **Mehak** | **Login page and Freight Broker** | Sign in, sign up and forgot-password screens (same theme as Milestone 1), the role picker, and the Freight Broker role (Copilot, Spot Quotes, Carriers, Margin) |
-| **Shahabuddin** | **Customer** | Customer role: own quotes only, quote form for own account, Copilot limited to own shipments and quotes |
-| **Bhargav** | **Auditor** | Auditor role: read-only access to every page, no quote creation and no agent actions |
+| **Bhargav** | **Customer** | Customer role: own quotes only, quote form for own account, Copilot limited to own shipments and quotes |
+| **Shahabuddin** | **Auditor** | Auditor role: read-only access to every page, no quote creation and no agent actions |
 
 ---
 
@@ -169,14 +169,14 @@ Every role also has **My profile** (click your name at the bottom of the sidebar
 * **Freight Broker role:** Copilot, **Spot Quotes** (create and view quotes), **Carriers**, **Margin**. Broker can create quotes through the 7-agent pipeline (route, weather, pricing, customs, margin, documents, alerts) and sees the full result with margin and agent trace. Broker cannot run agents, inject storms, edit customs or manage users (403).
 * Broker's Copilot reads ports, carriers, quotes and customers only.
 
-### Shahabuddin: Customer
+### Bhargav: Customer
 * **Customer role:** menu shows Copilot and Quotes only.
 * Customer sees **only their own quotes** (`users.customer_id`); quote pages, the detail drawer and the Copilot are all filtered by it.
 * The quote form is fixed to the customer's own account, even if a request tries another customer id.
 * The quote result shows price, status and transit only; margin and internal agent data are hidden.
 * Self sign-up always creates a Customer.
 
-### Bhargav: Auditor
+### Shahabuddin: Auditor
 * **Auditor role:** read-only access to Copilot, Route, Quotes, Carriers, Weather, Margin and Customs.
 * No quote creation, no agent actions, no Users page (403). Buttons such as *Run now* and the quote form are not shown.
 * The Auditor's Copilot can read all data domains (ports, carriers, shipments, quotes, weather, customs, tickets, customers).
