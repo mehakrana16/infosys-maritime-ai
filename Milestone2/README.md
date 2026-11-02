@@ -7,8 +7,6 @@ An Agentic AI-powered solution that optimizes maritime freight pricing and shipp
 
 **Milestone 2** turns the provided FreightQuote AI (six AI agents and a SQL Copilot) into a secure, multi-user product built with **FastAPI, SQLite, JWT, bcrypt and RBAC**, running on **Google Colab** (ngrok as fallback). It adds a login system, five roles, a Profile page, an Admin dashboard, a role-aware Copilot and a new design with dark mode.
 
-![Project banner](Screenshots/00-banner.png)
-
 ---
 
 ## Repository layout
@@ -61,65 +59,45 @@ An Agentic AI-powered solution that optimizes maritime freight pricing and shipp
 
 ## Screenshots
 
-### 1. Login and sign-up
-Sign in, sign up and forgot-password screens with the five-card role picker.
+### Login and account creation
+Sign in and sign up screens with the five-card role picker (same slate-blue and cream theme as Milestone 1).
 
 <p align="center">
-  <img src="Screenshots/01-login.png" alt="Login page" width="48%">
-  <img src="Screenshots/02-signup.png" alt="Sign-up page" width="48%">
+  <img src="Screenshots/Login.jpeg" alt="Login page" width="48%">
+  <img src="Screenshots/Account%20Creation.jpeg" alt="Account creation page" width="48%">
 </p>
 
+### Role dashboards
+What each role sees after signing in. Menu items outside the role are greyed out with a lock, and the server answers 403 for them.
+
+**Admin**: users table, KPI cards, role change, lock/unlock, activity log.
+
 <p align="center">
-  <img src="Screenshots/03-role-picker.png" alt="Role picker with five role cards" width="70%">
+  <img src="Screenshots/Admin.jpeg" alt="Admin dashboard" width="90%">
 </p>
 
-### 2. Profile page
-Username, email, role, joined date and last login, with change username and change password.
+**Operations Manager**: Route, Carriers, Weather, Customs and Run agents.
 
 <p align="center">
-  <img src="Screenshots/04-profile.png" alt="Profile page" width="80%">
+  <img src="Screenshots/Operations%20Manager.jpeg" alt="Operations Manager view" width="90%">
 </p>
 
-### 3. Admin dashboard
-KPI cards, users table, add user, role change, lock/unlock, delete with confirmation and the activity log.
+**Freight Broker**: Copilot, Spot Quotes, Carriers and Margin.
 
 <p align="center">
-  <img src="Screenshots/05-admin-dashboard.png" alt="Admin dashboard with users table" width="90%">
+  <img src="Screenshots/Frieght%20Broker.jpeg" alt="Freight Broker view" width="90%">
 </p>
 
-### 4. Access denied (403)
-A restricted role opening a page outside its privileges (for example typing `#admin` as Operations Manager).
+**Auditor**: read-only access to every page, no quote creation and no agent actions.
 
 <p align="center">
-  <img src="Screenshots/06-403-denied.png" alt="403 access denied page" width="80%">
+  <img src="Screenshots/Auditor.jpeg" alt="Auditor view" width="90%">
 </p>
 
-### 5. Role matrix
-Which role can open which page.
+**Customer**: Copilot and Quotes only, own quotes only.
 
 <p align="center">
-  <img src="Screenshots/07-role-matrix.png" alt="Role permission matrix" width="80%">
-</p>
-
-### 6. AI Copilot
-An exact question answered with the SQL behind it, and a greeting.
-
-<p align="center">
-  <img src="Screenshots/08-copilot-answer.png" alt="Copilot answering a question with SQL shown" width="48%">
-  <img src="Screenshots/09-copilot-greeting.png" alt="Copilot greeting" width="48%">
-</p>
-
-### 7. Quote and Weather
-A generated quote (Freight Broker or Admin) and the Weather page after injecting a storm (Admin).
-
-<p align="center">
-  <img src="Screenshots/10-quote-generated.png" alt="Generated quote" width="48%">
-  <img src="Screenshots/11-weather-storm.png" alt="Weather page after storm injection" width="48%">
-</p>
-
-### 8. Dark mode
-<p align="center">
-  <img src="Screenshots/12-dark-mode.png" alt="Dark mode" width="80%">
+  <img src="Screenshots/Customer.jpeg" alt="Customer view" width="90%">
 </p>
 
 ---
