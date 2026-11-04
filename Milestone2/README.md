@@ -8,6 +8,7 @@ FreightQuote AI is a multi-user freight platform. One sign-in page loads the acc
 
 | Role | Done by |
 |---|---|
+| Login page | **Mehak** |
 | Freight Broker | **Mehak** |
 | Operations Manager | **Bhavana** |
 | Admin | **Bhavana** |
@@ -33,6 +34,16 @@ FreightQuote AI is a multi-user freight platform. One sign-in page loads the acc
 
 ## Roles, work done and screenshots
 
+### Login page
+
+**Done by:** Mehak
+
+One sign-in page for every role: username or email + password, no role selection (the role is loaded automatically after sign-in). It also has sign up (new accounts are Customers), forgot password by e-mail OTP or security question, and account lock after 5 wrong passwords.
+
+**1. Sign in page with the Welcome back form**
+
+![Login page - Sign in page with the Welcome back form](screenshots/Login%20Page.jpeg)
+
 ### Admin
 
 **Done by:** Bhavana
@@ -43,19 +54,15 @@ Platform operator. Manages users, roles, active / inactive status, temporary or 
 
 **1. Admin dashboard: all users with Active / Inactive status, role, account, password type and actions**
 
-![Admin - admin-dashboard](screenshots/admin/01-admin-dashboard.png)
+![Admin - Admin dashboard: all users with Active / Inactive status, role, account, password type and actions](screenshots/Admin%20Dashboard.jpeg)
 
-**2. My profile with profile picture (avatar / photo), change username and change password**
+**2. My profile with profile picture, change username and change password**
 
-![Admin - my-profile](screenshots/admin/02-my-profile.png)
+![Admin - My profile with profile picture, change username and change password](screenshots/Admin%20Profile.jpeg)
 
-**3. AI Copilot with the mic button and read-aloud option**
+**3. AI Copilot listening to a voice question and showing the SQL-exact answer**
 
-![Admin - ai-copilot](screenshots/admin/03-ai-copilot.png)
-
-**4. AI Copilot listening to a voice question and showing the SQL-exact answer**
-
-![Admin - ai-copilot-voice](screenshots/admin/04-ai-copilot-voice.png)
+![Admin - AI Copilot listening to a voice question and showing the SQL-exact answer](screenshots/Admin%28AI%20Copilot%29.jpeg)
 
 ### Operations Manager
 
@@ -65,13 +72,13 @@ Runs logistics. Watches routes, carriers, weather and customs, runs the agents a
 
 **Pages:** AI Copilot, Route AI, Carriers, Weather Risk, Customs, Run agents, My profile
 
-**1. AI Copilot (only the pages of this role are shown in the sidebar)**
+**1. AI Copilot with the mic button (sidebar shows only this role's pages)**
 
-![Operations Manager - ai-copilot](screenshots/operations-manager/01-ai-copilot.png)
+![Operations Manager - AI Copilot with the mic button (sidebar shows only this role's pages)](screenshots/Operations%20Manager%28AI%20Copilot%29.jpeg)
 
 **2. My profile with avatar and the pages this role can open**
 
-![Operations Manager - my-profile](screenshots/operations-manager/02-my-profile.png)
+![Operations Manager - My profile with avatar and the pages this role can open](screenshots/Operations%20Manager%28Profile%29.jpeg)
 
 ### Freight Broker
 
@@ -83,7 +90,7 @@ Sells and prices. Creates spot quotes, compares carriers and checks margins.
 
 **1. My profile with avatar and the pages this role can open**
 
-![Freight Broker - my-profile](screenshots/freight-broker/01-my-profile.png)
+![Freight Broker - My profile with avatar and the pages this role can open](screenshots/Freight%20Broker%28Profile%29.jpeg)
 
 ### Auditor
 
@@ -95,11 +102,11 @@ Compliance reviewer. Read-only access to every operational page and to the Copil
 
 **1. Spot Quotes page (read only): quote decisions and margin chart**
 
-![Auditor - spot-quotes](screenshots/auditor/01-spot-quotes.png)
+![Auditor - Spot Quotes page (read only): quote decisions and margin chart](screenshots/Auditor%28Spots%20Quotes%29.jpeg)
 
 **2. My profile with avatar and the pages this role can open**
 
-![Auditor - my-profile](screenshots/auditor/02-my-profile.png)
+![Auditor - My profile with avatar and the pages this role can open](screenshots/Auditor%28Profile%29.jpeg)
 
 ### Customer
 
@@ -111,7 +118,7 @@ External shipper. Sees only their own quotes and shipments.
 
 **1. My profile with avatar, customer account id and only two pages in the sidebar**
 
-![Customer - my-profile](screenshots/customer/01-my-profile.png)
+![Customer - My profile with avatar, customer account id and only two pages in the sidebar](screenshots/Customer.jpeg)
 
 ---
 
