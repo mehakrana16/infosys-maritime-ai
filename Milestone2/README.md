@@ -2,7 +2,7 @@
 
 **Infosys Springboard Internship 7.0 · Batch 4** · FastAPI · SQLite · JWT · bcrypt · Role-Based Access Control · Google Colab
 
-FreightQuote AI is a multi-user freight platform. One sign-in page loads the access of the user's role automatically. It has six AI agents, an SQL-exact AI Copilot (with voice input), live weather and customs checks, and an Admin dashboard.
+FreightQuote AI is a multi-user freight platform. One sign-in page loads the access of the user's role automatically. It has AI agents, an SQL-exact AI Copilot (with voice input), live weather and customs checks, and an Admin dashboard.
 
 ## Team
 
@@ -21,7 +21,7 @@ FreightQuote AI is a multi-user freight platform. One sign-in page loads the acc
 - Single login for all roles (username or email + password), account lock after 5 wrong passwords, forgot password by e-mail OTP or security question
 - Profile page with avatar or photo, change username and password
 - Role-Based Access Control: each role sees only the pages it may open, enforced on the server
-- AI Copilot with a 🎤 voice button: ask by voice, get the answer (and hear it read aloud)
+- AI Copilot with a mic button: ask by voice, get the answer (and hear it read aloud)
 - Admin dashboard: active / inactive users, roles, lock and delete, activity log
 - Admin can add a user or customer with a **temporary** password (must be changed at first sign-in) or a **permanent** password (the user can change it any time)
 
@@ -33,35 +33,29 @@ FreightQuote AI is a multi-user freight platform. One sign-in page loads the acc
 
 ## Roles, work done and screenshots
 
-Screenshots are stored in the `screenshots/` folder, one sub-folder per role.
-
 ### Admin
 
 **Done by:** Bhavana
 
-Platform operator. Manages users, roles, active/inactive status, temporary or permanent passwords, locks and the activity log, and can open every page.
+Platform operator. Manages users, roles, active / inactive status, temporary or permanent passwords, locks and the activity log, and can open every page.
 
-**Pages:** AI Copilot, Route, Quotes, Carriers, Weather, Margin, Customs, Run agents, Users (Admin dashboard), My profile
+**Pages:** AI Copilot, Route AI, Spot Quotes, Carriers, Weather Risk, Margin, Customs, Run agents, Users (Admin dashboard), My profile
 
-**1. Sign in page**
+**1. Admin dashboard: all users with Active / Inactive status, role, account, password type and actions**
 
-![Admin - Sign in page](screenshots/admin/01-login.png)
+![Admin - admin-dashboard](screenshots/admin/01-admin-dashboard.png)
 
-**2. Admin dashboard with active / inactive users**
+**2. My profile with profile picture (avatar / photo), change username and change password**
 
-![Admin - Admin dashboard with active / inactive users](screenshots/admin/02-dashboard.png)
+![Admin - my-profile](screenshots/admin/02-my-profile.png)
 
-**3. Add user / customer with temporary or permanent password**
+**3. AI Copilot with the mic button and read-aloud option**
 
-![Admin - Add user / customer with temporary or permanent password](screenshots/admin/03-add-user.png)
+![Admin - ai-copilot](screenshots/admin/03-ai-copilot.png)
 
-**4. My profile with avatar**
+**4. AI Copilot listening to a voice question and showing the SQL-exact answer**
 
-![Admin - My profile with avatar](screenshots/admin/04-profile.png)
-
-**5. AI Copilot (voice mic)**
-
-![Admin - AI Copilot (voice mic)](screenshots/admin/05-copilot.png)
+![Admin - ai-copilot-voice](screenshots/admin/04-ai-copilot-voice.png)
 
 ### Operations Manager
 
@@ -69,27 +63,15 @@ Platform operator. Manages users, roles, active/inactive status, temporary or pe
 
 Runs logistics. Watches routes, carriers, weather and customs, runs the agents and approves re-routes.
 
-**Pages:** AI Copilot, Route, Carriers, Weather, Customs, Run agents, My profile
+**Pages:** AI Copilot, Route AI, Carriers, Weather Risk, Customs, Run agents, My profile
 
-**1. Sign in page**
+**1. AI Copilot (only the pages of this role are shown in the sidebar)**
 
-![Operations Manager - Sign in page](screenshots/operations-manager/01-login.png)
+![Operations Manager - ai-copilot](screenshots/operations-manager/01-ai-copilot.png)
 
-**2. Route page**
+**2. My profile with avatar and the pages this role can open**
 
-![Operations Manager - Route page](screenshots/operations-manager/02-route.png)
-
-**3. Weather page**
-
-![Operations Manager - Weather page](screenshots/operations-manager/03-weather.png)
-
-**4. Customs page**
-
-![Operations Manager - Customs page](screenshots/operations-manager/04-customs.png)
-
-**5. Run agents page**
-
-![Operations Manager - Run agents page](screenshots/operations-manager/05-run-agents.png)
+![Operations Manager - my-profile](screenshots/operations-manager/02-my-profile.png)
 
 ### Freight Broker
 
@@ -97,27 +79,11 @@ Runs logistics. Watches routes, carriers, weather and customs, runs the agents a
 
 Sells and prices. Creates spot quotes, compares carriers and checks margins.
 
-**Pages:** AI Copilot, Quotes, Carriers, Margin, My profile
+**Pages:** AI Copilot, Spot Quotes, Carriers, Margin, My profile
 
-**1. Sign in page**
+**1. My profile with avatar and the pages this role can open**
 
-![Freight Broker - Sign in page](screenshots/freight-broker/01-login.png)
-
-**2. Spot quotes**
-
-![Freight Broker - Spot quotes](screenshots/freight-broker/02-quotes.png)
-
-**3. Carriers**
-
-![Freight Broker - Carriers](screenshots/freight-broker/03-carriers.png)
-
-**4. Margin page**
-
-![Freight Broker - Margin page](screenshots/freight-broker/04-margin.png)
-
-**5. AI Copilot**
-
-![Freight Broker - AI Copilot](screenshots/freight-broker/05-copilot.png)
+![Freight Broker - my-profile](screenshots/freight-broker/01-my-profile.png)
 
 ### Auditor
 
@@ -125,23 +91,15 @@ Sells and prices. Creates spot quotes, compares carriers and checks margins.
 
 Compliance reviewer. Read-only access to every operational page and to the Copilot.
 
-**Pages:** AI Copilot, Route, Quotes, Carriers, Weather, Margin, Customs, My profile
+**Pages:** AI Copilot, Route AI, Spot Quotes, Carriers, Weather Risk, Margin, Customs, My profile
 
-**1. Sign in page**
+**1. Spot Quotes page (read only): quote decisions and margin chart**
 
-![Auditor - Sign in page](screenshots/auditor/01-login.png)
+![Auditor - spot-quotes](screenshots/auditor/01-spot-quotes.png)
 
-**2. Quotes (read only)**
+**2. My profile with avatar and the pages this role can open**
 
-![Auditor - Quotes (read only)](screenshots/auditor/02-quotes.png)
-
-**3. Customs (read only)**
-
-![Auditor - Customs (read only)](screenshots/auditor/03-customs.png)
-
-**4. AI Copilot**
-
-![Auditor - AI Copilot](screenshots/auditor/04-copilot.png)
+![Auditor - my-profile](screenshots/auditor/02-my-profile.png)
 
 ### Customer
 
@@ -149,23 +107,11 @@ Compliance reviewer. Read-only access to every operational page and to the Copil
 
 External shipper. Sees only their own quotes and shipments.
 
-**Pages:** AI Copilot, Quotes, My profile
+**Pages:** AI Copilot, Spot Quotes, My profile
 
-**1. Sign in / sign up page**
+**1. My profile with avatar, customer account id and only two pages in the sidebar**
 
-![Customer - Sign in / sign up page](screenshots/customer/01-login.png)
-
-**2. My quotes**
-
-![Customer - My quotes](screenshots/customer/02-quotes.png)
-
-**3. AI Copilot**
-
-![Customer - AI Copilot](screenshots/customer/03-copilot.png)
-
-**4. My profile and change password**
-
-![Customer - My profile and change password](screenshots/customer/04-profile.png)
+![Customer - my-profile](screenshots/customer/01-my-profile.png)
 
 ---
 
