@@ -1,289 +1,172 @@
-# FreightQuote AI · Agentic AI for Maritime Freight Pricing and Route Optimization
+# FreightQuote AI · Milestone 2
 
-**Team name: Team03**
-Infosys Springboard Internship 7.0 · Batch 4
+**Infosys Springboard Internship 7.0 · Batch 4** · FastAPI · SQLite · JWT · bcrypt · Role-Based Access Control · Google Colab
 
-An Agentic AI-powered solution that optimizes maritime freight pricing and shipping routes by analyzing market trends, fuel costs, weather conditions, port congestion and transit times. AI agents collaborate to recommend cost-effective routes, estimate freight prices and support smarter, data-driven shipping decisions.
+FreightQuote AI is a multi-user freight platform. One sign-in page loads the access of the user's role automatically. It has six AI agents, an SQL-exact AI Copilot (with voice input), live weather and customs checks, and an Admin dashboard.
 
-**Milestone 2** turns the provided FreightQuote AI (six AI agents and a SQL Copilot) into a secure, multi-user product built with **FastAPI, SQLite, JWT, bcrypt and RBAC**, running on **Google Colab** (ngrok as fallback). It adds a login system, five roles, a Profile page, an Admin dashboard, a role-aware Copilot and a new design with dark mode.
+## Team
 
----
-
-## Repository layout
-
-| Folder | What it holds |
+| Role | Done by |
 |---|---|
-| `Milestone1/` | User Authentication Module (login, signup, forgot password, admin login) |
-| `Milestone2/` | FreightQuote AI platform: FastAPI, JWT, bcrypt, RBAC, Admin dashboard, role-aware Copilot (this README lives here) |
-| `Milestone2/Screenshots/` | Screenshots used in this README |
+| Freight Broker | **Mehak** |
+| Operations Manager | **Bhavana** |
+| Admin | **Bhavana** |
+| Customer | **Bhargav** |
+| Auditor | **Shahabuddin** |
 
----
-
-## Team Team03: who did what
-
-| Team member | Part done | What it covers |
-|---|---|---|
-| **Bhawana** | **Admin and Operations Manager** | Admin dashboard (users table, add, delete, role change, lock/unlock, KPI cards, activity log), Run agents page, and the Operations Manager role (Route, Carriers, Weather, Customs, Run agents) |
-| **Mehak** | **Login page and Freight Broker** | Sign in, sign up and forgot-password screens (same theme as Milestone 1), the role picker, and the Freight Broker role (Copilot, Spot Quotes, Carriers, Margin) |
-| **Bhargav** | **Customer** | Customer role: own quotes only, quote form for own account, Copilot limited to own shipments and quotes |
-| **Shahabuddin** | **Auditor** | Auditor role: read-only access to every page, no quote creation and no agent actions |
-
----
-
-## Table of contents
-1. [Features](#features)
-2. [Screenshots](#screenshots)
-3. [How to run](#how-to-run)
-4. [Roles and privileges](#roles-and-privileges)
-5. [What each team member built](#what-each-team-member-built)
-6. [Security](#security)
-7. [AI Copilot](#ai-copilot)
-8. [Project structure](#project-structure)
-9. [Testing](#testing)
-10. [Troubleshooting](#troubleshooting)
-
----
+**Team-03:** Mehak, Bhavana, Bhargav, Shahabuddin
 
 ## Features
-* **Login system** (Milestone 1 flow in FastAPI): sign up, sign in, forgot password by e-mail code or security question.
-* **Role picker** on the sign-in screen: Admin, Operations Manager, Freight Broker, Auditor, Customer.
-* **JWT sessions** and **bcrypt** password hashing; the account locks after **5 wrong passwords**.
-* **Profile page**: username, email, role, joined date, last login; change username and password.
-* **RBAC**: the server answers **403** for any page or action outside the role. The sidebar lists all items, and the ones a role may not use are **greyed out with a lock**.
-* **Admin dashboard**: users table, add user, delete (with confirmation), promote/demote, lock/unlock, KPI cards, role permission table, latest 50 activity-log entries.
-* **Run agents** page: run one agent or all agents now.
-* **AI Copilot**: 30+ question patterns, spelling-mistake handling, the SQL and row count shown under every answer, polite reply and three suggestions when a question is out of scope, role-aware data access.
-* **Design**: consistent theme, dark mode, loading placeholders, clear error and 403 pages, phone-friendly layout.
 
----
-
-## Screenshots
-
-### Login and account creation
-Sign in and sign up screens with the five-card role picker (same slate-blue and cream theme as Milestone 1).
-
-<p align="center">
-  <img src="Screenshots/Login.jpeg" alt="Login page" width="48%">
-  <img src="Screenshots/Account%20Creation.jpeg" alt="Account creation page" width="48%">
-</p>
-
-### Role dashboards
-What each role sees after signing in. Menu items outside the role are greyed out with a lock, and the server answers 403 for them.
-
-**Admin**: users table, KPI cards, role change, lock/unlock, activity log.
-
-<p align="center">
-  <img src="Screenshots/Admin.jpeg" alt="Admin dashboard" width="90%">
-</p>
-
-**Operations Manager**: Route, Carriers, Weather, Customs and Run agents.
-
-<p align="center">
-  <img src="Screenshots/Operations%20Manager.jpeg" alt="Operations Manager view" width="90%">
-</p>
-
-**Freight Broker**: Copilot, Spot Quotes, Carriers and Margin.
-
-<p align="center">
-  <img src="Screenshots/Frieght%20Broker.jpeg" alt="Freight Broker view" width="90%">
-</p>
-
-**Auditor**: read-only access to every page, no quote creation and no agent actions.
-
-<p align="center">
-  <img src="Screenshots/Auditor.jpeg" alt="Auditor view" width="90%">
-</p>
-
-**Customer**: Copilot and Quotes only, own quotes only.
-
-<p align="center">
-  <img src="Screenshots/Customer.jpeg" alt="Customer view" width="90%">
-</p>
-
----
+- Single login for all roles (username or email + password), account lock after 5 wrong passwords, forgot password by e-mail OTP or security question
+- Profile page with avatar or photo, change username and password
+- Role-Based Access Control: each role sees only the pages it may open, enforced on the server
+- AI Copilot with a 🎤 voice button: ask by voice, get the answer (and hear it read aloud)
+- Admin dashboard: active / inactive users, roles, lock and delete, activity log
+- Admin can add a user or customer with a **temporary** password (must be changed at first sign-in) or a **permanent** password (the user can change it any time)
 
 ## How to run
-1. Open `Milestone2_FreightQuote_Final.ipynb` in **Google Colab**.
-2. Add these **Colab Secrets** (key icon in the left sidebar). Never paste a secret into a cell.
 
-| Secret | Purpose |
-|---|---|
-| `JWT_SECRET` | signs login tokens (required) |
-| `NGROK_AUTHTOKEN` | fallback public link |
-| `EMAIL_ADDRESS`, `EMAIL_PASSWORD` | Gmail sender and app password for the reset code e-mail |
-| `ADMIN_PASSWORD`, `DEMO_PASSWORD` | optional; if missing, random passwords are generated and printed once |
+1. Open the notebook in Google Colab and add the Colab Secrets (`JWT_SECRET`, `NGROK_AUTHTOKEN`, `EMAIL_ADDRESS`, `EMAIL_PASSWORD`, `ADMIN_PASSWORD`, optional `ADMIN_EMAIL`, `DEMO_PASSWORD`).
+2. Run all cells from top to bottom.
+3. Open the app link, sign in as the Admin and add users, or use the demo accounts.
 
-3. Choose **Runtime → Restart session**, then **Runtime → Run all** (from the first cell).
-4. Wait for `FreightQuote AI is running`, then click **Open the app**.
-5. The credentials cell prints the Admin account and one demo account per role. On the sign-in screen pick the role card that matches the account.
-6. Before submitting: **Edit → Clear all outputs**. The repository must contain no secrets, no `.db` files and no tokens.
+## Roles, work done and screenshots
 
----
+Screenshots are stored in the `screenshots/` folder, one sub-folder per role.
 
-## Roles and privileges
+### Admin
 
-### Page access
-| Role | Copilot | Route | Quotes | Carriers | Weather | Margin | Customs | Run agents | Users |
-|---|---|---|---|---|---|---|---|---|---|
-| Admin | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Operations Manager | ✓ | ✓ | ✗ | ✓ | ✓ | ✗ | ✓ | ✓ | ✗ |
-| Freight Broker | ✓ | ✗ | ✓ | ✓ | ✗ | ✓ | ✗ | ✗ | ✗ |
-| Auditor | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ |
-| Customer | ✓ | ✗ | ✓ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
+**Done by:** Bhavana
 
-### Sidebar per role (enabled / greyed out)
-| Role | Enabled | Greyed out |
-|---|---|---|
-| Admin | Copilot, Route, Quotes, Carriers, Weather, Margin, Customs, Run agents, Users | none |
-| Operations Manager | Copilot, Route, Carriers, Weather, Customs, Run agents | Quotes, Margin, Users |
-| Freight Broker | Copilot, Quotes, Carriers, Margin | Route, Weather, Customs, Run agents, Users |
-| Auditor | Copilot, Route, Quotes, Carriers, Weather, Margin, Customs | Run agents, Users |
-| Customer | Copilot, Quotes | everything else |
+Platform operator. Manages users, roles, active/inactive status, temporary or permanent passwords, locks and the activity log, and can open every page.
 
-Every role also has **My profile** (click your name at the bottom of the sidebar).
+**Pages:** AI Copilot, Route, Quotes, Carriers, Weather, Margin, Customs, Run agents, Users (Admin dashboard), My profile
 
-### Capabilities (checked by `need(ctx, capability)`)
-| Capability | Admin | Operations Manager | Freight Broker | Auditor | Customer |
-|---|---|---|---|---|---|
-| copilot | Yes | Yes | Yes | Yes | Yes |
-| view (internal tables, tickets) | Yes | Yes | Yes | Yes | No |
-| quote (create quotes) | Yes | No | Yes | No | Yes (own account) |
-| run (agents, weather refresh) | Yes | Yes | No | No | No |
-| approve (re-route) | Yes | Yes | No | No | No |
-| resolve (edit customs) | Yes | Yes | No | No | No |
-| storm (inject storm) | Yes | No | No | No | No |
-| users (manage users, activity log) | Yes | No | No | No | No |
+**1. Sign in page**
 
----
+![Admin - Sign in page](screenshots/admin/01-login.png)
 
-## What each team member built
+**2. Admin dashboard with active / inactive users**
 
-### Bhawana: Admin and Operations Manager
-* **Admin dashboard** (`views_platform.py`, `auth.py`, `/api/admin/*`): KPI cards (total users, users per role, locked users), users table with status, add-user form, delete with confirmation, role drop-down, lock/unlock, role permission table, activity log (latest 50).
-* **Rules:** an admin cannot delete, lock or change their own account; the last Admin can never be removed; a locked user's token stops working on the very next request.
-* **Run agents page:** one card per agent with *Run now*, plus *Run all agents*.
-* **Operations Manager role:** can open Route, Carriers, Weather, Customs and Run agents; can run agents, re-route and attach customs documents; cannot open Quotes, Margin or Users and cannot create quotes.
+![Admin - Admin dashboard with active / inactive users](screenshots/admin/02-dashboard.png)
 
-### Mehak: Login page and Freight Broker
-* **Login page** (`static/app.js`, `auth.py`): sign in, sign up and forgot password, password strength meter, show/hide password, same slate-blue and cream theme as Milestone 1, dark mode, **role picker** with five cards. The picked role must match the account; if not, the screen selects the right one for you.
-* **Freight Broker role:** Copilot, **Spot Quotes** (create and view quotes), **Carriers**, **Margin**. Broker can create quotes through the 7-agent pipeline (route, weather, pricing, customs, margin, documents, alerts) and sees the full result with margin and agent trace. Broker cannot run agents, inject storms, edit customs or manage users (403).
-* Broker's Copilot reads ports, carriers, quotes and customers only.
+**3. Add user / customer with temporary or permanent password**
 
-### Bhargav: Customer
-* **Customer role:** menu shows Copilot and Quotes only.
-* Customer sees **only their own quotes** (`users.customer_id`); quote pages, the detail drawer and the Copilot are all filtered by it.
-* The quote form is fixed to the customer's own account, even if a request tries another customer id.
-* The quote result shows price, status and transit only; margin and internal agent data are hidden.
-* Self sign-up always creates a Customer.
+![Admin - Add user / customer with temporary or permanent password](screenshots/admin/03-add-user.png)
 
-### Shahabuddin: Auditor
-* **Auditor role:** read-only access to Copilot, Route, Quotes, Carriers, Weather, Margin and Customs.
-* No quote creation, no agent actions, no Users page (403). Buttons such as *Run now* and the quote form are not shown.
-* The Auditor's Copilot can read all data domains (ports, carriers, shipments, quotes, weather, customs, tickets, customers).
+**4. My profile with avatar**
 
----
+![Admin - My profile with avatar](screenshots/admin/04-profile.png)
 
-## Security
-* Passwords and security answers are **bcrypt** hashes; no API ever returns a hash.
-* Same error text for an unknown account and a wrong password.
-* **5 wrong passwords lock the account**; an administrator unlocks it, or the user resets the password.
-* Locked or deleted users, role changes, password changes and sign-out take effect **immediately** (the user row is checked on every request, and the live stream stops).
-* Login and reset routes are rate limited; the metrics route needs an Admin token.
-* Secrets only in Colab Secrets; `.gitignore` keeps `.db` files, tokens and generated credentials out of the repository.
-* Hiding a menu item is not security: the **server** returns **403**, and every 403 is written to the activity log.
+**5. AI Copilot (voice mic)**
 
----
+![Admin - AI Copilot (voice mic)](screenshots/admin/05-copilot.png)
 
-## AI Copilot
-Every answer is produced by a fixed, parameterised `SELECT`; the SQL and the number of rows are shown under the answer (*SQL behind this answer*). Nothing is invented. A typo such as `cheepest to Rotterdm` is corrected and shown as *Interpreted as ...*. A question outside the data gets an apology and three valid example questions. Each role only reads its own data domains (`ROLE_DATA` in `rbac.py`); a Customer only reads their own quotes and shipments.
+### Operations Manager
 
-**Question patterns added (30+, in `copilot_plus.py`):** most/least congested ports (per region), congestion at a port, dwell time, ports per region; cheapest/most expensive carrier (to a port), most/least reliable, risk level, rating, carrier details; shipments on customs hold, delayed, by status, highest delay risk, heading to or leaving a port, heaviest, vessels at sea, `SHP-id` lookup; quotes below/above a margin, average margin, above a price, by status, latest, `QTE-id` lookup, top customers; customer tiers and credit risk; storms near the Red Sea, Suez, Panama and others, strongest winds and waves, weather at a port; customs duty and documents, restricted goods, shipments missing documents; open and critical tickets.
+**Done by:** Bhavana
 
-### Tested questions with answers (sample run, as Admin)
-| Question | Answer | Rows |
-|---|---|---|
-| Which carrier is cheapest to Rotterdam? | Cheapest carrier serving Rotterdam Port: X-Press Feeders (cost index 0.86, 83.7% on time). Cost index is relative: lower means cheaper. | 4 |
-| how many shipments are on customs hold | 47 shipments are on customs hold; most at Salalah Port (2). | 10 |
-| quotes below 10% margin | 1 quotes have a margin below 10%; the lowest is QTE-0006 at 9.1%. | 1 |
-| which ports are most congested | Most congested port: Limassol Port (index 4.6, dwell 7.0 days). Top 5 below. | 5 |
-| show storms near the Red Sea | 1 active storm cell(s) within 1,500 km of the Red Sea. 7 ports lie within 1,200 km; the nearest are listed below. | 7 |
-| Which carriers are high risk? | 31 carriers are rated High risk; showing the 25 with the lowest on-time rate. | 25 |
-| How many shipments are delayed? | 94 shipments are delayed or waiting at anchorage. | 2 |
-| Which shipments have the highest delay risk? | Highest predicted delay risk: SHP-0013 (Tokyo Port to Rotterdam Port, risk 0.77). | 5 |
-| What is the duty on pharmaceuticals? | Pharmaceuticals (HS chapter 30): duty 5.0%, restricted goods, required documents: Commercial Invoice, Packing List, Bill of Lading | 1 |
-| Which goods are restricted? | 3 goods categories are restricted. | 3 |
-| How many ports are in Asia? | There are 101 ports in Asia. | 1 |
-| Which port has the longest dwell time? | Longest average dwell time: Limassol Port with 7.0 days. | 5 |
-| What is the average margin? | Across 53 quotes the average margin is 16.52% (range 9.1% to 23.4%) and the average price is $5,900. | 1 |
-| How many quotes are pending approval? | 0 quotes are Pending Approval (of 53 in total). | 4 |
-| Show the latest quotes | The latest quote is QTE-L00003 ($5,173, Approved). Showing the 5 most recent. | 5 |
-| What is the status of QTE-0003? | QTE-0003 is Accepted, priced at $1,575 with a margin of 10.9%. | 1 |
-| Which customer has the highest quoted value? | Top customer by quoted value: CUST-019 (Corporate Client 019) with $37,539 across 6 quotes. | 5 |
-| How many Platinum customers do we have? | There are 9 Platinum customers. | 9 |
-| Which ports have the strongest winds? | Strongest winds: Shanghai Port (1.5 m waves, 55.8 km/h wind). | 5 |
-| What is the weather at Singapore? | Weather at Singapore Port: wind 25.2 km/h, waves 5.4 m, 25.8 °C, severity 1. | 1 |
-| How many critical tickets are open? | There are 43 open agent tickets, 6 of them critical. | 5 |
-| Tell me about Maersk Line | Maersk Line: rating 4.85/5, 84.3% on time, cost index 1.15, Low risk. It carries 29 shipments, 12 of them delayed or on customs hold. | 1 |
-| Which carrier is least reliable? | Least reliable carrier: Regional Feeder Line 43 with 68.4% on-time delivery. | 5 |
-| Which ports in Asia are most congested? | Most congested port in Asia: Bangkok Port (index 4.6, dwell 5.0 days). Top 5 below. | 5 |
-| How many vessels are at sea? | 267 vessels are being tracked at sea, on average 44% of the way, at 14.5 knots. | 1 |
-| Which carrier is cheepest to Rotterdm? | Cheapest carrier serving Rotterdam Port: X-Press Feeders (cost index 0.86, 83.7% on time). Cost index is relative: lower means cheaper. | 4 |
-| how many shpiments are on custums hold | 47 shipments are on customs hold; most at Salalah Port (2). | 10 |
+Runs logistics. Watches routes, carriers, weather and customs, runs the agents and approves re-routes.
 
-Out-of-scope example ("What is the capital of France?"): *I'm sorry, I couldn't match that to the data I can query. I only answer from the database, so I won't guess. Here are three questions that work:*
+**Pages:** AI Copilot, Route, Carriers, Weather, Customs, Run agents, My profile
 
-The numbers come from randomly seeded demo data, so they differ between runs.
+**1. Sign in page**
 
----
+![Operations Manager - Sign in page](screenshots/operations-manager/01-login.png)
 
-## Project structure
-```
-Milestone2/
-  Milestone2_FreightQuote_Final.ipynb     the whole project as one Colab notebook
-  README.md
-  Screenshots/           all images used in this README
-  app/
-    server.py            FastAPI app: routes, user_of, ctx, need, menu_for
-    auth.py              users DB, bcrypt, JWT, signup/login/reset, lockout, profile + admin operations      (new)
-    rbac.py              ROLE_MENU, ROLE_CAPS, ROLE_DATA, sidebar list                                       (new)
-    copilot_plus.py      30+ SQL intents, spelling correction, role-aware data                               (new)
-    views_platform.py    Profile, Admin and Run agents pages                                                 (new)
-    views_core.py, views_freight.py, hardening.py, mailer.py                                                 (changed)
-    domain_freight.py, live_engine.py, worker.py, analyst.py, qa.py, ...                                     (provided)
-    static/ app.js, style.css, index.html, promo.webp
-```
+**2. Route page**
+
+![Operations Manager - Route page](screenshots/operations-manager/02-route.png)
+
+**3. Weather page**
+
+![Operations Manager - Weather page](screenshots/operations-manager/03-weather.png)
+
+**4. Customs page**
+
+![Operations Manager - Customs page](screenshots/operations-manager/04-customs.png)
+
+**5. Run agents page**
+
+![Operations Manager - Run agents page](screenshots/operations-manager/05-run-agents.png)
+
+### Freight Broker
+
+**Done by:** Mehak
+
+Sells and prices. Creates spot quotes, compares carriers and checks margins.
+
+**Pages:** AI Copilot, Quotes, Carriers, Margin, My profile
+
+**1. Sign in page**
+
+![Freight Broker - Sign in page](screenshots/freight-broker/01-login.png)
+
+**2. Spot quotes**
+
+![Freight Broker - Spot quotes](screenshots/freight-broker/02-quotes.png)
+
+**3. Carriers**
+
+![Freight Broker - Carriers](screenshots/freight-broker/03-carriers.png)
+
+**4. Margin page**
+
+![Freight Broker - Margin page](screenshots/freight-broker/04-margin.png)
+
+**5. AI Copilot**
+
+![Freight Broker - AI Copilot](screenshots/freight-broker/05-copilot.png)
+
+### Auditor
+
+**Done by:** Shahabuddin
+
+Compliance reviewer. Read-only access to every operational page and to the Copilot.
+
+**Pages:** AI Copilot, Route, Quotes, Carriers, Weather, Margin, Customs, My profile
+
+**1. Sign in page**
+
+![Auditor - Sign in page](screenshots/auditor/01-login.png)
+
+**2. Quotes (read only)**
+
+![Auditor - Quotes (read only)](screenshots/auditor/02-quotes.png)
+
+**3. Customs (read only)**
+
+![Auditor - Customs (read only)](screenshots/auditor/03-customs.png)
+
+**4. AI Copilot**
+
+![Auditor - AI Copilot](screenshots/auditor/04-copilot.png)
+
+### Customer
+
+**Done by:** Bhargav
+
+External shipper. Sees only their own quotes and shipments.
+
+**Pages:** AI Copilot, Quotes, My profile
+
+**1. Sign in / sign up page**
+
+![Customer - Sign in / sign up page](screenshots/customer/01-login.png)
+
+**2. My quotes**
+
+![Customer - My quotes](screenshots/customer/02-quotes.png)
+
+**3. AI Copilot**
+
+![Customer - AI Copilot](screenshots/customer/03-copilot.png)
+
+**4. My profile and change password**
+
+![Customer - My profile and change password](screenshots/customer/04-profile.png)
 
 ---
 
-## Testing
-Real accounts, HTTP status per page (200 = opened, 403 = refused by the server):
-
-| Role | copilot | route | quotes | carriers | weather | margin | customs | runagents | admin |
-|---|---|---|---|---|---|---|---|---|---|
-| Admin | 200 | 200 | 200 | 200 | 200 | 200 | 200 | 200 | 200 |
-| Operations Manager | 200 | 200 | 403 | 200 | 200 | 403 | 200 | 200 | 403 |
-| Freight Broker | 200 | 403 | 200 | 200 | 403 | 200 | 403 | 403 | 403 |
-| Auditor | 200 | 200 | 200 | 200 | 200 | 200 | 200 | 403 | 403 |
-| Customer | 200 | 403 | 200 | 403 | 403 | 403 | 403 | 403 | 403 |
-
-Also tested: 5 wrong passwords lock the account; an old token stops working after a lock; an admin cannot delete or lock themselves; a role change applies at once; a wrong role pick returns 403 and the right role is selected. These tests ran in a simulated Colab setup; please also repeat them once in your own Colab session.
-
----
-
-## Troubleshooting
-| Problem | Fix |
-|---|---|
-| "This is a Customer account, not Auditor" | Pick the role card that matches your account. Accounts made with Sign up are Customers. |
-| `ModuleNotFoundError: No module named 'config'` | The project-file cells did not run. Use Runtime → Restart session, then Runtime → Run all from the first cell. |
-| "Account is locked" | Ask an Admin to unlock it, or use Forgot password. |
-| E-mail code not sent | Add `EMAIL_ADDRESS` and `EMAIL_PASSWORD` (Gmail app password) in Colab Secrets, or use the security question. |
-| Old design after an update | Press Ctrl+F5 in the browser. |
-
----
-
-## License
-Released under the **MIT License**. See [LICENSE](../LICENSE).
-
----
-
-**Team03** · Bhawana · Mehak · Shahabuddin · Bhargav
+**team-03 (Mehak,Bhavana, Bhargav, Shahabuddin)**
