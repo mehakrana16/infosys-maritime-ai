@@ -13,11 +13,11 @@ This milestone builds on the secure sign-in from Milestone 1 and the role-based 
 
 | Sign in | AI Copilot |
 |---|---|
-| ![Sign in](screenshots/Login-Page.jpeg) | ![AI Copilot](screenshots/AICopilot.png) |
+| ![Sign in](screenshots/Login-Page.jpeg) | ![AI Copilot](screenshots/AI-Copilot.png) |
 
 | Agent simulator | Admin → Teach Copilot |
 |---|---|
-| ![Simulator](screenshots/Simulator.png) | ![Teach Copilot](screenshots/Admin(Teach Copilot).png) |
+| ![Simulator](screenshots/Simulator.png) | ![Teach Copilot](screenshots/Admin(Teach-Copilot).png) |
 
 ---
 
