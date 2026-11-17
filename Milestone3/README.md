@@ -13,11 +13,11 @@ This milestone builds on the secure sign-in from Milestone 1 and the role-based 
 
 | Sign in | AI Copilot |
 |---|---|
-| ![Sign in](docs/login.jpeg) | ![AI Copilot](docs/copilot.png) |
+| ![Sign in](screenshots/Login-Page.jpeg) | ![AI Copilot](screenshots/AICopilot.png) |
 
 | Agent simulator | Admin → Teach Copilot |
 |---|---|
-| ![Simulator](docs/simulator.png) | ![Teach Copilot](docs/teach-copilot.png) |
+| ![Simulator](screenshots/Simulator.png) | ![Teach Copilot](screenshots/Admin(Teach Copilot).png) |
 
 ---
 
@@ -230,7 +230,7 @@ Cloud database, 2FA, e-mail verification at sign-up, IP-based rate limiting, liv
 
 ## 👤 Author
 
-Mehak Rana (Member 2, AI Copilot) with Team-03 — Infosys Springboard Virtual Internship 2026
+Mehak Rana (Member 2, AI Copilot) with Team-04 — Infosys Springboard Virtual Internship 2026
 
 **Mentor:** *add name*
 
