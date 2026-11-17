@@ -232,6 +232,6 @@ Cloud database, 2FA, e-mail verification at sign-up, IP-based rate limiting, liv
 
 Mehak Rana (Member 2, AI Copilot) with Team-04 — Infosys Springboard Virtual Internship 2026
 
-**Mentor:** *add name*
+**Mentor:** Mohamedsipli
 
 *Built as part of the Infosys Springboard Virtual Internship project.*
